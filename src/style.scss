@@ -1,0 +1,404 @@
+@import '_normalize.scss';
+
+
+// colors
+$maincolor: rgb(16, 15, 16);
+$leftmessagecolor: #1c1b29;
+$rightmessagecolor: #292841;
+$headercolor: rgb(33, 33, 33);
+$fontcolor: #fff;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: $fontcolor;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main {
+    background-color: $maincolor;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+
+    &__chats {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        background-color: $maincolor;
+        overflow-y: auto;
+        border-right: 1px solid #cccccc;
+        height: 100vh;
+
+        &:last-child {
+            width: 100%;
+            border-right: none;
+        }
+
+        a {
+            border-bottom: 1px solid #cccccc;
+            text-decoration: none;
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        @media screen and (max-width: 980px) {
+            display: none;
+
+            &:last-child {
+                width: 100%;
+                border-right: none;
+                display: flex;
+            }
+
+        }
+
+
+
+        .user-info {
+            width: 100%;
+
+
+
+            .avatar-and-name {
+                height: 70px;
+                position: relative;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                background-color: $headercolor;
+                padding: 10px;
+                overflow: hidden;
+
+
+                img {
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    margin-right: 20px;
+                }
+
+                h1 {
+                    font-size: 20px;
+                }
+
+                button {
+                    position: absolute;
+                    right: 0px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 30px;
+                    height: 30px;
+                    background: url('./images/logout.svg');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 70%;
+                    display: block;
+                    outline: none;
+                }
+            }
+
+        }
+
+
+        .chat {
+            padding: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            padding-right: 30px;
+
+
+            &__avatar-and-name {
+                display: flex;
+
+                img {
+                    height: 30px;
+                    width: 30px;
+                    margin-right: 10px;
+                    border-radius: 50%;
+                }
+
+                h1 {
+                    font-size: 15px;
+                    text-decoration: none;
+                }
+            }
+
+
+
+
+
+            &:hover {
+                background-color: #223768;
+            }
+
+            &:active {
+                background-color: #1b2d55;
+            }
+
+
+
+
+
+        }
+    }
+
+    &__chat-info {
+        width: 70%;
+        background-color: $maincolor;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+
+        @media screen and (max-width: 980px) {
+            width: 100%;
+        }
+
+        &:first-child {
+            width: 100%;
+
+            .avatar-and-name button {
+                display: block;
+            }
+
+        }
+    }
+
+    .avatar-and-name {
+        height: 70px;
+        padding: 15px 10px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: $headercolor;
+
+
+        button {
+            display: none;
+            width: 25px;
+            height: 25px;
+            background: url('./images/chats.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 80% 80%;
+            margin-right: 10px;
+            border: none;
+            border-radius: 50%;
+            display: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #223768;
+            }
+
+            &:active {
+                background-color: #1b2d55;
+            }
+
+            @media screen and (max-width: 980px) {
+                display: block;
+            }
+        }
+
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        h1 {
+            font-size: 17px;
+        }
+    }
+
+    .messages {
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        flex-grow: 1;
+
+
+        .message {
+            padding: 10px;
+            max-width: 80%;
+            margin: 5px;
+            width: auto;
+            border-radius: 10px;
+            flex-shrink: 0;
+
+
+            &_left {
+                background-color: $leftmessagecolor;
+                align-self: flex-start;
+            }
+
+            &_right {
+                align-self: flex-end;
+                background-color: $rightmessagecolor;
+
+            }
+
+
+        }
+    }
+
+    .send-message {
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        padding-right: 10px;
+        background: #212121;
+        align-items: center;
+
+
+        textarea {
+            height: 100%;
+            flex-grow: 1;
+            resize: none;
+            padding: 6px;
+            outline: none;
+            background-color: inherit;
+            border: none;
+            overflow: hidden;
+
+            &::placeholder {
+                color: $fontcolor;
+            }
+        }
+
+        button {
+            margin-left: 10px;
+            width: 25px;
+            height: 25px;
+            background: url('./images/send.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 80%;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #223768;
+            }
+
+            &:active {
+                background-color: #1b2d55;
+            }
+        }
+    }
+
+    &__login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: $maincolor;
+        flex-direction: column;
+
+        h1 {
+            font-size: 50px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+
+        button {
+            padding: 10px;
+            border: none;
+            outline: none;
+            background-color: $rightmessagecolor;
+            border-radius: 10px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #223768;
+            }
+
+            &:active {
+                background-color: #1b2d55;
+            }
+        }
+    }
+}
+
+.lds-ellipsis {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+}
+
+.lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(24px, 0);
+    }
+}
