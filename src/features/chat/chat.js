@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import UsersList from '../users/usersList.js'
 import DefaultPhoto from '../../images/user.svg'
 import { Redirect } from 'react-router-dom'

@@ -8,7 +8,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { FirebaseContext } from './index.js';
 import Loader from './features/loader/loader.js';
 import { setCurrentUser, setUsersInfo } from './features/users/usersSlice.js'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 
 function canDispatch(users, chats) {
